@@ -37,19 +37,15 @@ class CreateAppForm {
     }
 }
 
-
-
-
-const gameTitle = document.getElementById("gameTitle");
-const gameDescription = document.getElementById("gameDescription");
-const gameGenre = document.getElementById("gameGenre");
-const gamePublisher = document.getElementById("gamePublisher");
-const gameImageUrl = document.getElementById("gameImageUrl");
-const gameRelease = document.getElementById("gameRelease");
-
-document.querySelector(".submitBtn").addEventListener("click", event => {
+const validateGame = (event) => {
     event.preventDefault();
-    
+    console.log("validateGame ***   ")
+    const gameTitle = document.getElementById("gameTitle");
+    const gameDescription = document.getElementById("gameDescription");
+    const gameGenre = document.getElementById("gameGenre");
+    const gamePublisher = document.getElementById("gamePublisher");
+    const gameImageUrl = document.getElementById("gameImageUrl");
+    const gameRelease = document.getElementById("gameRelease");
     const newApp = new CreateAppForm(gameTitle,gameDescription,gameGenre,gamePublisher,gameImageUrl,gameRelease);
     
     newApp.validateFormElement(newApp.title, "The title is required!");
@@ -68,7 +64,7 @@ document.querySelector(".submitBtn").addEventListener("click", event => {
         urlencoded.append("imageUrl", newApp.imageUrl.value);
         urlencoded.append("description", newApp.description.value);
         console.log("aici e urlencoded ", urlencoded)
-
+    
         const newGameRelease = async () =>{
             const newGame = await apiURL.createGameRequest(urlencoded);
             const createDomGame = new GameModel(
@@ -78,7 +74,7 @@ document.querySelector(".submitBtn").addEventListener("click", event => {
                 newGame.description,
                 apiURL,
             )
-            createDomGame.createDomElement(newGame)
+        createDomGame.createDomElement(newGame)
         console.log("game created successfully in Dom ", newGame);
         }
         newGameRelease();
@@ -88,4 +84,12 @@ document.querySelector(".submitBtn").addEventListener("click", event => {
     gamePublisher.value = "";
     gameImageUrl.value = "";
     gameRelease.value = "";
-})
+}   
+document.querySelector(".submitBtn").addEventListener("click",validateGame);
+
+
+
+
+// document.querySelector(".submitBtn").addEventListener("click", event => {
+//     event.preventDefault();
+// });
