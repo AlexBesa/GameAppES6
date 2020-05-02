@@ -13,3 +13,13 @@ Recomandare impartire de clase: ( sunt doar sugesti, idee este ca fiecare clasa 
 - App ( acesta clasa App este optionala, scopul ei este sa gestioneze Game Si FetchApi. In loc de o clasa App, puteti avea functie simple )
 
 3. Impartim in mai multe fisiere. Fiecare clasa cu fisierul ei.
+
+
+Rewrite Games App with ES6
+Cerinta: Tot codul se va converti cu ES6
+
+1. Pentru clase se va folosi 'class Game  { }', nu se vor mai pune metodele pe prototype
+
+2. Peste tot unde a-ti folosit var, sa va inlocui cu let/const
+
+3. Unde sa folosit 'const self = this', ca sa puteti accesa this in interiorul unui callback => va deveni un arrow function
